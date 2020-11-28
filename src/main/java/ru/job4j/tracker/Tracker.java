@@ -64,6 +64,12 @@ public class Tracker {
         return Arrays.copyOf(names, count);
     }
 
+    /**
+     * Меняет Item на другую, id при этом остается неизменным
+     * @param id id
+     * @param item item
+     * @return была ли произведена замена
+     */
     public boolean replace(int id, Item item) {
         int index = indexOf(id);
         if (index == -1) {
@@ -89,5 +95,22 @@ public class Tracker {
             }
         }
         return rsl;
+    }
+
+    /**
+     * Замена заполненной ячейки массива на null
+     * @param id id
+     * @return была ли удалена заявка
+     */
+    public boolean delete(int id) {
+        int index = indexOf(id);
+        if (index == -1) {
+            return false;
+        } else {
+            System.arraycopy(items, index + 1, items, index, size - index);
+            items[size - 1] = null;
+            size--;
+            return true;
+        }
     }
 }
