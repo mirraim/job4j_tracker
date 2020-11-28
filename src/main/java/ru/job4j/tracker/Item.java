@@ -19,6 +19,10 @@ public class Item {
         this.name = name;
     }
 
+    public Item(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }
@@ -37,5 +41,14 @@ public class Item {
 
     public LocalDateTime getCreated() {
         return created;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", created=" + created
+                + '}';
     }
 }
