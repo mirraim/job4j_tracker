@@ -25,15 +25,8 @@ public class Tracker {
      * @return Item или null
      */
     public Item findById(int id) {
-        Item rsl = null;
-        for (int index = 0; index < size; index++) {
-            Item item = items[index];
-            if (item.getId() == id) {
-                rsl = item;
-                break;
-            }
-        }
-        return rsl;
+        int index = indexOf(id);
+        return index != -1 ? items[index] : null;
     }
 
     /**
@@ -69,5 +62,28 @@ public class Tracker {
            }
         }
         return Arrays.copyOf(names, count);
+    }
+
+    public boolean replace(int id, Item item) {
+        item.setId(id);
+        int index = indexOf(id);
+        items[index] = item;
+        return true;
+    }
+
+    /**
+     * возвращает индекс по id
+     * @param id id
+     * @return index
+     */
+    private int indexOf(int id) {
+        int rsl = -1;
+        for (int index = 0; index < size; index++) {
+            if (items[index].getId() == id) {
+                rsl = index;
+                break;
+            }
+        }
+        return rsl;
     }
 }
