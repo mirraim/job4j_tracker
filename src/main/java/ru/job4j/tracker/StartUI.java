@@ -48,7 +48,7 @@ public class StartUI {
      * @param input input
      * @param tracker tracker
      */
-    private static void createItem(Input input, Tracker tracker) {
+    public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ====");
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
@@ -59,7 +59,7 @@ public class StartUI {
      * Выводим в консоль все item
      * @param tracker tracker
      */
-    private static void findAllItems(Tracker tracker) {
+    public static void findAllItems(Tracker tracker) {
         System.out.println("=== List Of Items ====");
         for (Item item : tracker.findAll()) {
             System.out.println(item);
@@ -73,7 +73,7 @@ public class StartUI {
      * @param input input
      * @param tracker tracker
      */
-    private static void replaceItem(Input input, Tracker tracker) {
+    public static void replaceItem(Input input, Tracker tracker) {
         System.out.println("=== Edit ====");
         int id = input.askInt("Enter id: ");
         String name = input.askStr("Enter name: ");
@@ -91,7 +91,7 @@ public class StartUI {
      * @param input input
      * @param tracker tracker
      */
-    private static void deleteItem(Input input, Tracker tracker) {
+    public static void deleteItem(Input input, Tracker tracker) {
         System.out.println("=== Delete by id ====");
         int id = input.askInt("Enter id: ");
         if (tracker.delete(id)) {
@@ -107,7 +107,7 @@ public class StartUI {
      * @param input input
      * @param tracker tracker
      */
-    private static void findItemById(Input input, Tracker tracker) {
+    public static void findItemById(Input input, Tracker tracker) {
         System.out.println("=== Find by id ====");
         int id = input.askInt("Enter id: ");
         Item item = tracker.findById(id);
@@ -124,7 +124,7 @@ public class StartUI {
      * @param input input
      * @param tracker tracker
      */
-    private static void findItemsByName(Input input, Tracker tracker) {
+    public static void findItemsByName(Input input, Tracker tracker) {
         System.out.println("=== Find by name ====");
         String name = input.askStr("Enter name: ");
         Item[] items = tracker.findByName(name);
