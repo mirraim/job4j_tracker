@@ -24,9 +24,18 @@ public class StartUITest{
         StartUI.createItem(input, tracker);
         StartUI.createItem(input, tracker);
         Item[] created = tracker.findAll();
-        int expected = 2;
-        assertThat(created.length, is(expected));
         assertThat(answers[1], is(created[1].getName()));
+    }
+
+    @Test
+    public void whenCreate2ItemThenLength2() {
+        String[] answers = {"Fix PC", "Fix Outlook"};
+        Input input = new StubInput(answers);
+        Tracker tracker = new Tracker();
+        StartUI.createItem(input, tracker);
+        StartUI.createItem(input, tracker);
+        Item[] created = tracker.findAll();
+        assertThat(created.length, is(2));
     }
 
     @Test
@@ -38,6 +47,15 @@ public class StartUITest{
         StartUI.replaceItem(new StubInput(answers), tracker);
         Item replaced = tracker.findById(item.getId());
         assertThat(replaced.getName(), is(answers[1]));
+    }
+
+    @Test
+    public void whenReplaceItemLehgthNotChange() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("new Item");
+        tracker.add(item);
+        String[] answers = {String.valueOf(item.getId()), "replaced item"};
+        StartUI.replaceItem(new StubInput(answers), tracker);
         assertThat(tracker.findAll().length, is(1));
     }
 
@@ -49,7 +67,16 @@ public class StartUITest{
         String[] answers = {String.valueOf(item.getId())};
         StartUI.deleteItem(new StubInput(answers), tracker);
         Item deleted = tracker.findById(item.getId());
-        assertThat(deleted, is((Item) null));
+        assertNull(deleted);
+    }
+
+    @Test
+    public void whenDeleteItemLengthIsLessBy1() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("new Item");
+        tracker.add(item);
+        String[] answers = {String.valueOf(item.getId())};
+        StartUI.deleteItem(new StubInput(answers), tracker);
         assertThat(tracker.findAll().length, is(0));
     }
 }
