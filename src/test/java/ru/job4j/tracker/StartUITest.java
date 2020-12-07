@@ -24,7 +24,8 @@ public class StartUITest{
         StartUI.createItem(input, tracker);
         StartUI.createItem(input, tracker);
         Item[] created = tracker.findAll();
-        assertThat(answers[1], is(created[1].getName()));
+        Item expected = new Item("Fix Outlook");
+        assertThat(expected.getName(), is(created[1].getName()));
     }
 
     @Test
@@ -45,8 +46,9 @@ public class StartUITest{
         tracker.add(item);
         String[] answers = {String.valueOf(item.getId()), "replaced item"};
         StartUI.replaceItem(new StubInput(answers), tracker);
+        Item expected = new Item("replaced item");
         Item replaced = tracker.findById(item.getId());
-        assertThat(replaced.getName(), is(answers[1]));
+        assertThat(replaced.getName(), is(expected.getName()));
     }
 
     @Test
