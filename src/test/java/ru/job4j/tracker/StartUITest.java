@@ -73,7 +73,8 @@ public class StartUITest{
                     new ExitAction()
        };
        new StartUI(output).init(in, tracker, actions);
-        assertThat(out.toString().split("\n")[1], is(item.toString()));
+       String expected = actions[0].name() + "\n" + item.toString() + "\n";
+        assertThat(out.toString(), is(expected));
     }
 
     @Test
@@ -88,7 +89,8 @@ public class StartUITest{
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(out.toString().split("\n")[1], is(item.toString()));
+        String expected = actions[0].name() + "\n" + item.toString() + "\n";
+        assertThat(out.toString(), is(expected));
     }
 
     @Test
@@ -104,6 +106,7 @@ public class StartUITest{
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(out.toString().split("\n")[1], is(second.toString()));
+        String expected = actions[0].name() + "\n" + second.toString() + "\n";
+        assertThat(out.toString(), is(expected));
     }
 }
