@@ -109,4 +109,24 @@ public class StartUITest{
         String expected = actions[0].name() + System.lineSeparator() + second.toString() + System.lineSeparator();
         assertThat(out.toString(), is(expected));
     }
+
+    @Test
+    public void whenInvalidExit() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] { "7", "0" }
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new ExitAction()
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                "Menu." + System.lineSeparator()
+                        + "0. " + actions[0].name() + System.lineSeparator()
+                        + "Wrong input, you can select: 0 .. 0" + System.lineSeparator()
+                        + "Menu." + System.lineSeparator()
+                        + "0. " + actions[0].name() + System.lineSeparator()
+        ));
+    }
 }
