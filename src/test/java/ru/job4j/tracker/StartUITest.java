@@ -73,7 +73,7 @@ public class StartUITest{
                     new ExitAction()
        };
        new StartUI(output).init(in, tracker, actions);
-       String expected = actions[0].name() + "\n" + item.toString() + "\n";
+       String expected = actions[0].name() + System.lineSeparator() + item.toString() + System.lineSeparator();
         assertThat(out.toString(), is(expected));
     }
 
@@ -89,7 +89,7 @@ public class StartUITest{
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
-        String expected = actions[0].name() + "\n" + item.toString() + "\n";
+        String expected = actions[0].name() + System.lineSeparator() + item.toString() + System.lineSeparator();
         assertThat(out.toString(), is(expected));
     }
 
@@ -106,7 +106,7 @@ public class StartUITest{
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
-        String expected = actions[0].name() + "\n" + second.toString() + "\n";
+        String expected = actions[0].name() + System.lineSeparator() + second.toString() + System.lineSeparator();
         assertThat(out.toString(), is(expected));
     }
 }
