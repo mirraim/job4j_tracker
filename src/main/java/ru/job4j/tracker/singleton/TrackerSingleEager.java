@@ -6,18 +6,13 @@ import ru.job4j.tracker.Tracker;
 import java.util.Arrays;
 
 public class TrackerSingleEager {
-    private static final TrackerSingleEager INSTANCE = new TrackerSingleEager(new Tracker());
-    private Tracker tracker;
+    private static final Tracker INSTANCE = new Tracker();
 
-    private TrackerSingleEager(Tracker tracker) {
-        this.tracker = tracker;
+    private TrackerSingleEager() {
     }
 
-    public static TrackerSingleEager getInstance() {
+    public static Tracker getInstance() {
         return INSTANCE;
     }
 
-    public Tracker getTracker() {
-        return tracker;
-    }
 }
