@@ -11,6 +11,9 @@ import ru.job4j.tracker.output.ConsoleOutput;
 import ru.job4j.tracker.output.Output;
 import ru.job4j.tracker.output.StubOutput;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class StartUITest{
    @Test
@@ -20,12 +23,11 @@ public class StartUITest{
         );
         Tracker tracker = new Tracker();
         Output out = new ConsoleOutput();
-        UserAction[] actions = {
-                new CreateAction(out),
-                new ExitAction()
-        };
+        List<UserAction> actions = new ArrayList<>();
+        actions.add(new CreateAction(out));
+        actions.add(new ExitAction());
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findAll()[0].getName(), is("Item name"));
+        assertThat(tracker.findAll().get(0).getName(), is("Item name"));
     }
 
     @Test
@@ -37,10 +39,9 @@ public class StartUITest{
         Input in = new StubInput(
                 new String[] {"0" , String.valueOf(item.getId()), replacedName, "1"}
         );
-        UserAction[] actions = {
-                new ReplaceAction(output),
-                new ExitAction()
-        };
+        List<UserAction> actions = new ArrayList<>();
+        actions.add(new ReplaceAction(output));
+        actions.add(new ExitAction());
         new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()).getName(), is(replacedName));
     }
@@ -53,10 +54,9 @@ public class StartUITest{
         Input in = new StubInput(
                 new String[] {"0" , String.valueOf(item.getId()), "1"}
         );
-        UserAction[] actions = {
-                new DeleteAction(output),
-                new ExitAction()
-        };
+        List<UserAction> actions = new ArrayList<>();
+        actions.add(new DeleteAction(output));
+        actions.add(new ExitAction());
         new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()), is(nullValue()));
     }
@@ -68,12 +68,12 @@ public class StartUITest{
        Input in = new StubInput(new String[]{"0", "1"});
        Output output = new ConsoleOutput();
        Output out = new StubOutput();
-       UserAction[] actions = {
-                    new FindAllAction(out),
-                    new ExitAction()
-       };
+       List<UserAction> actions = new ArrayList<>();
+       actions.add(new FindAllAction(out));
+       actions.add(new ExitAction());
        new StartUI(output).init(in, tracker, actions);
-       String expected = actions[0].name() + System.lineSeparator() + item.toString() + System.lineSeparator();
+       String expected = actions.get(0).name() + System.lineSeparator()
+                        + item.toString() + System.lineSeparator();
         assertThat(out.toString(), is(expected));
     }
 
@@ -84,12 +84,12 @@ public class StartUITest{
         Input in = new StubInput(new String[]{"0", "New Item", "1"});
         Output output = new ConsoleOutput();
         Output out = new StubOutput();
-        UserAction[] actions = {
-                new FindByNameAction(out),
-                new ExitAction()
-        };
+        List<UserAction> actions = new ArrayList<>();
+        actions.add(new FindByNameAction(out));
+        actions.add(new ExitAction());
         new StartUI(output).init(in, tracker, actions);
-        String expected = actions[0].name() + System.lineSeparator() + item.toString() + System.lineSeparator();
+        String expected = actions.get(0).name() + System.lineSeparator()
+                            + item.toString() + System.lineSeparator();
         assertThat(out.toString(), is(expected));
     }
 
@@ -101,12 +101,12 @@ public class StartUITest{
         Input in = new StubInput(new String[]{"0", "2", "1"});
         Output output = new ConsoleOutput();
         Output out = new StubOutput();
-        UserAction[] actions = {
-                new FindByIdAction(out),
-                new ExitAction()
-        };
+        List<UserAction> actions = new ArrayList<>();
+        actions.add(new FindByIdAction(out));
+        actions.add(new ExitAction());
         new StartUI(output).init(in, tracker, actions);
-        String expected = actions[0].name() + System.lineSeparator() + second.toString() + System.lineSeparator();
+        String expected = actions.get(0).name() + System.lineSeparator()
+                        + second.toString() + System.lineSeparator();
         assertThat(out.toString(), is(expected));
     }
 
@@ -117,16 +117,15 @@ public class StartUITest{
                 new String[] { "7", "0" }
         );
         Tracker tracker = new Tracker();
-        UserAction[] actions = {
-                new ExitAction()
-        };
+        List<UserAction> actions = new ArrayList<>();
+        actions.add(new ExitAction());
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
                 "Menu." + System.lineSeparator()
-                        + "0. " + actions[0].name() + System.lineSeparator()
+                        + "0. " + actions.get(0).name() + System.lineSeparator()
                         + "Wrong input, you can select: 0 .. 0" + System.lineSeparator()
                         + "Menu." + System.lineSeparator()
-                        + "0. " + actions[0].name() + System.lineSeparator()
+                        + "0. " + actions.get(0).name() + System.lineSeparator()
         ));
     }
 }
