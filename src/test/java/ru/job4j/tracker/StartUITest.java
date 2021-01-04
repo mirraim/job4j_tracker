@@ -14,8 +14,7 @@ import ru.job4j.tracker.output.StubOutput;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class StartUITest{
+public class StartUITest {
    @Test
     public void whenCreateItem() {
         Input in = new StubInput(
@@ -37,7 +36,7 @@ public class StartUITest{
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         Input in = new StubInput(
-                new String[] {"0" , String.valueOf(item.getId()), replacedName, "1"}
+                new String[] {"0", String.valueOf(item.getId()), replacedName, "1"}
         );
         List<UserAction> actions = new ArrayList<>();
         actions.add(new ReplaceAction(output));
@@ -52,7 +51,7 @@ public class StartUITest{
         Output output = new ConsoleOutput();
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new StubInput(
-                new String[] {"0" , String.valueOf(item.getId()), "1"}
+                new String[] {"0", String.valueOf(item.getId()), "1"}
         );
         List<UserAction> actions = new ArrayList<>();
         actions.add(new DeleteAction(output));
@@ -114,7 +113,7 @@ public class StartUITest{
     public void whenInvalidExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] { "7", "0" }
+                new String[] {"7", "0"}
         );
         Tracker tracker = new Tracker();
         List<UserAction> actions = new ArrayList<>();
