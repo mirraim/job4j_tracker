@@ -19,7 +19,8 @@ public class StartUI {
 
     /**
      * Инициализируем выбор пользователя
-     * @param input input
+     *
+     * @param input   input
      * @param tracker tracker
      */
     public void init(Input input, Tracker tracker, List<UserAction> actions) {

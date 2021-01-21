@@ -37,7 +37,8 @@ public class User {
 
     /**
      * Метод позволяет изменить паспортные данные
-     * @param passport в качестве параметра принимает новые паспортные данные в формате String
+     * @param passport в качестве параметра принимает
+     *                 новые паспортные данные в формате String
      */
     public void setPassport(String passport) {
         this.passport = passport;

@@ -25,7 +25,8 @@ public class SearchAtt {
         return filter(list, predicate);
     }
 
-    public static List<Attachment> filter(List<Attachment> list, Predicate<Attachment> p) {
+    public static List<Attachment> filter(List<Attachment> list,
+                                          Predicate<Attachment> p) {
         List<Attachment> rsl = new ArrayList<>();
         for (Attachment att : list) {
             if (p.test(att)) {
