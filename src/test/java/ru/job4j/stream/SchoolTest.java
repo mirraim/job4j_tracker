@@ -25,7 +25,7 @@ public class SchoolTest {
         students.add(new Student(60, "Surname6"));
         students.add(new Student(70, "Surname7"));
         students.add(new Student(80, "Surname8"));
-        students.add(new Student(90, "Surname9"));
+        students.add(new Student(90, "Surname8"));
     }
 
     @Test
@@ -37,7 +37,7 @@ public class SchoolTest {
         List<Student> expected = new ArrayList<>();
         expected.add(new Student(70, "Surname7"));
         expected.add(new Student(80, "Surname8"));
-        expected.add(new Student(90, "Surname9"));
+        expected.add(new Student(90, "Surname8"));
         assertThat(rsl, is(expected));
     }
 
@@ -70,16 +70,16 @@ public class SchoolTest {
     @Test
     public void whenCollectToMap() {
         School sc = new School();
-        Map<String, Student> school = sc.collectToMap(students);
-        boolean rsl = true;
-        for (Student student : students) {
-           String surname = student.getSurname();
-           if (!school.containsKey(surname) || !school.get(surname).equals(student)) {
-               rsl = false;
-               break;
-           }
-
-        }
-        assertThat(rsl, is(true));
+        Map<String, Student> rsl = sc.collectToMap(students);
+        Map<String, Student> expected = new HashMap<>();
+        expected.put("Surname1", new Student(10, "Surname1"));
+        expected.put("Surname2", new Student(20, "Surname2"));
+        expected.put("Surname3", new Student(30, "Surname3"));
+        expected.put("Surname4", new Student(40, "Surname4"));
+        expected.put("Surname5", new Student(50, "Surname5"));
+        expected.put("Surname6", new Student(60, "Surname6"));
+        expected.put("Surname7", new Student(70, "Surname7"));
+        expected.put("Surname8", new Student(90, "Surname8"));
+        assertThat(rsl, is(expected));
     }
 }

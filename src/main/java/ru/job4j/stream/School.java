@@ -27,10 +27,10 @@ public class School {
      */
     public Map<String, Student> collectToMap(List<Student> students) {
         return students.stream()
-                .distinct()
                 .collect(Collectors.toMap(
-                        Student::getSurname, //ключ
-                        st -> st             //значение
+                        Student::getSurname,
+                        st -> st,
+                        (st1, st2) -> st1.getScore() > st2.getScore() ? st1 : st2
                 ));
     }
 }
