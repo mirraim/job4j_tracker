@@ -1,4 +1,4 @@
-package ru.job4j.tracker.bank;
+package ru.job4j.bank;
 
 import java.util.ArrayList;
 import java.util.HashMap;
