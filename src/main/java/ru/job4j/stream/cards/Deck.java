@@ -6,8 +6,6 @@ import java.util.stream.Stream;
 
 public class Deck {
     public List<String> generate() {
-        Suit[] suits = Suit.values();
-        Value[] values = Value.values();
         return Stream.of(Suit.values())
                 .flatMap(suit -> Stream.of(Value.values())
                         .map(value -> suit + " " + value))
