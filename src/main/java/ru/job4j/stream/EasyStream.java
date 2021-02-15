@@ -35,7 +35,7 @@ public class EasyStream {
     public EasyStream filter(Predicate<Integer> fun) {
         List<Integer> rsl = new ArrayList<>();
         for (Integer number : this.getList()) {
-            if(fun.test(number)) {
+            if (fun.test(number)) {
                 rsl.add(number);
             }
         }
