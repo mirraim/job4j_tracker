@@ -16,6 +16,7 @@
     </properties>
 
     <dependencies>
+        <!--TEST-->
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
@@ -28,6 +29,13 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <!--DATA -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.12</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>

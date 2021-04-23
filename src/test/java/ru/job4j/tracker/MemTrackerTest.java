@@ -8,11 +8,11 @@ import java.util.List;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-public class TrackerTest {
+public class MemTrackerTest {
 
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = new Item();
         item.setName("test1");
         tracker.add(item);
@@ -22,7 +22,7 @@ public class TrackerTest {
 
     @Test
     public void findItemWhenSomeID() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item1 = new Item(1, "one");
         Item item2 = new Item(2, "two");
         Item item3 = new Item(3, "three");
@@ -35,7 +35,7 @@ public class TrackerTest {
 
     @Test
     public void findAllTest() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item1 = new Item(1, "one");
         Item item2 = new Item(2, "two");
         Item item3 = new Item(3, "three");
@@ -52,7 +52,7 @@ public class TrackerTest {
 
     @Test
     public void findByNameTest() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item1 = new Item(1, "one");
         Item item2 = new Item(2, "two");
         Item item3 = new Item(3, "three");
@@ -67,7 +67,7 @@ public class TrackerTest {
 
     @Test
     public void whenReplace() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item bug = new Item();
         bug.setName("Bug");
         tracker.add(bug);
@@ -80,7 +80,7 @@ public class TrackerTest {
 
     @Test
     public void whenDelete() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item bug = new Item();
         bug.setName("Bug");
         tracker.add(bug);

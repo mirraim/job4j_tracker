@@ -13,7 +13,7 @@ public class SortItemDescTest {
     public void compare() {
         Item item = new Item(2, "item");
         Item anotherItem = new Item(5, "anotherItem");
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         tracker.add(item);
         tracker.add(anotherItem);
         Collections.sort(tracker.findAll(), new SortItemDesc());
