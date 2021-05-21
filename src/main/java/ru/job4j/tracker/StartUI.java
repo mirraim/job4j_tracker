@@ -1,6 +1,5 @@
 package ru.job4j.tracker;
 
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class StartUI {
@@ -45,13 +44,23 @@ public class StartUI {
                 System.out.println("=== Find by id ====");
                 System.out.println("Enter id: ");
                 int id = Integer.valueOf(scanner.nextLine());
-                System.out.println(tracker.findById(id));
+                Item item = tracker.findById(id);
+                if (item != null) {
+                    System.out.println(item);
+                } else {
+                    System.out.println("Id is not found");
+                }
             } else if (select == 5) {
                 System.out.println("=== Find by name ====");
                 System.out.println("Enter id: ");
                 String name = scanner.nextLine();
-                for (Item item : tracker.findByName(name)) {
-                    System.out.println(item);
+                Item[] items = tracker.findByName(name);
+                if (items.length > 0) {
+                    for (Item item : items) {
+                        System.out.println(item);
+                    }
+                } else {
+                    System.out.println("Name is not found");
                 }
             } else if (select == 6) {
                 run = false;
