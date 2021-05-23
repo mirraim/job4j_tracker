@@ -17,6 +17,8 @@ public class StartUI {
                edit(scanner, tracker);
             } else if (select == 3) {
                 delete(scanner, tracker);
+            } else if (select == 4) {
+                findItemById(scanner, tracker);
             } else if (select == 6) {
                 run = false;
             }
@@ -78,6 +80,18 @@ public class StartUI {
             System.out.println("Заявка удалена успешно.");
         } else {
             System.out.println("Ошибка удаления заявки.");
+        }
+    }
+
+    private void findItemById(Scanner scanner, Tracker tracker) {
+        System.out.println("=== Find item by id ====");
+        System.out.print("Enter id: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        Item item = tracker.findById(id);
+        if (item != null) {
+            System.out.println(item);
+        } else {
+            System.out.println("Заявка с введенным id: " + id + " не найдена.");
         }
     }
 
