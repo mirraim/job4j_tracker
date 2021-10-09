@@ -1,34 +1,33 @@
 package ru.job4j.tracker;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import javax.persistence.*;
+import java.util.Objects;
 
-public class Item implements Comparable<Item> {
-    private int id;
+@Entity
+@Table(name = "items")
+public class Item {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
-    private LocalDateTime created = LocalDateTime.now();
 
     public Item() {
-    }
-
-    public Item(int id) {
-        this.id = id;
-    }
-
-    public Item(int id, String name) {
-        this.id = id;
-        this.name = name;
     }
 
     public Item(String name) {
         this.name = name;
     }
 
-    public int getId() {
+    public Item(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -40,23 +39,28 @@ public class Item implements Comparable<Item> {
         this.name = name;
     }
 
-    public LocalDateTime getCreated() {
-        return created;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Item item = (Item) o;
+        return Objects.equals(id, item.id)
+                && Objects.equals(name, item.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter
-                .ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
-        return "Item{"
-                + "id=" + id
+        return "{id='" + id + '\''
                 + ", name='" + name + '\''
-                + ", created=" + created.format(formatter)
                 + '}';
-    }
-
-    @Override
-    public int compareTo(Item anotherItem) {
-        return Integer.compare(this.id, anotherItem.getId());
     }
 }
