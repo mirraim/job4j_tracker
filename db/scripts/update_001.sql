@@ -9,5 +9,7 @@ UPDATE DATABASECHANGELOGLOCK SET LOCKED=0, LOCKGRANTED=null, LOCKEDBY=null where
 
 create table if not exists items (
     id serial primary key,
-    name varchar(2000)
+    name varchar(2000),
+    description text,
+    created timestamp
 );
