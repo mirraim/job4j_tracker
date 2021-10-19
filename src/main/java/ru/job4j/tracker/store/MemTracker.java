@@ -5,12 +5,11 @@ import ru.job4j.tracker.Item;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MemTracker implements Store {
+public class MemTracker implements Store, AutoCloseable {
     private final List<Item> items = new ArrayList<>();
     private int ids = 1;
 
-    @Override
-    public void init() {
+   public void init() {
 
     }
 
